@@ -7,6 +7,7 @@ package vacatesWeb.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +22,79 @@ import vacantesWeb.model.vacante;
  * @author jsmorales
  */
 public class vancanteController extends HttpServlet {
+    
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // se recibe el parámetro action
+        String actionParam = request.getParameter("action");
+        
+        System.out.println(actionParam);
+        
+        if("ver".equals(actionParam)){
+            
+            this.verDetalle(request, response);
+        }else if("all".equals(actionParam)){
+            
+            this.verTodos(request, response);
+        }
+    }
+    
+    protected void verDetalle(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        System.out.println("Ejecutando ver detalle");
+        
+        //se toma la id de la vacante
+        int idVacante = Integer.parseInt(request.getParameter("id")); // se pasa de string a int con la claseInteger y el metodo parseInt
+        
+        System.out.println(idVacante);
+        
+        conexion con = new conexion();
+        
+        vacanteDAO vacanteD = new vacanteDAO(con);
+        
+        vacante vacante = vacanteD.getById(idVacante);
+        
+        con.desconectar();
+        
+        System.out.println(vacante);
+        
+        RequestDispatcher rd; //permite hacer un reenvio de la solicitud
+        
+        request.setAttribute("detalleV", vacante); //se añade un atributo message al request
+        
+        rd = request.getRequestDispatcher("/detalle.jsp"); //al dispatcher se redirecciona al jsp
+        
+        rd.forward(request, response); //se ejecuta la redireccion
+                
+    }
+    
+    protected void verTodos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        System.out.println("Ejecutando ver todos");
+                        
+        conexion con = new conexion();
+        
+        vacanteDAO vacanteD = new vacanteDAO(con);
+        
+        List<vacante> lista = vacanteD.getAll();
+        
+        con.desconectar();
+        
+        System.out.println(lista);
+        
+        RequestDispatcher rd; //permite hacer un reenvio de la solicitud
+        
+        request.setAttribute("vacantes", lista); //se añade un atributo message al request
+        
+        rd = request.getRequestDispatcher("/vacantes.jsp"); //al dispatcher se redirecciona al jsp
+        
+        rd.forward(request, response); //se ejecuta la redireccion
+                
+    }
     
     
     @Override

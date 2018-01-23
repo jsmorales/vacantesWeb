@@ -12,9 +12,9 @@ public class conexion {
      * 
      **/
     
-    static String bd = "sistemadb";
+    static String bd = "vacantesweb";
     static String user = "root";
-    static String pass = "root";
+    static String pass = "";
     static String url = "jdbc:mysql://localhost/"+bd;
     
     Connection conn = null;

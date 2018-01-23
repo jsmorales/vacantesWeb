@@ -35,6 +35,8 @@ public class siteController extends HttpServlet {
         //se crea lista de tipo vacante para cargarla con el retorno
         //de la funcion de consulta de las 3 ultimas vacante
         List<vacante> lista3Vacantes = vctedao.get3Ultimas();
+        
+        System.out.println(lista3Vacantes);
         //se desconecta la base de datos
         con.desconectar();
         

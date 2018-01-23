@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Detalle de la vacance - Ingeniero en procesos de inyeccion de plasticos</title>
+    <title>Detalle de la vacante - ${detalleV.nombre}</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -26,7 +26,7 @@
         <nav>
           <ul class="nav nav-justified">
             <li><a href="#">Inicio</a></li>            
-            <li><a href="#">AdministraciÃ³n</a></li>                        
+            <li><a href="#">Administración</a></li>                        
             <li><a href="#">Acerca</a></li>            
           </ul>
         </nav>
@@ -41,15 +41,15 @@
 
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">Numero de la vacante</h3>
+          <h3 class="panel-title">Numero de la vacante: ${detalleV.id}</h3>
         </div>
         <div class="panel-body">
-          <h5><b>Vacante</b>: nombre de la vacante</h5>
-          <h5><b>Publicado</b>: fecha de publicacion</h5>                             
-          <b>DescripciÃ³n:</b><br>
-          <p class="text-justify">descripcion de la vacante</p>
+          <h5><b>Vacante</b>: ${detalleV.nombre}</h5>
+          <h5><b>Publicado</b>: ${detalleV.fechaPublicacion}</h5>                             
+          <b>Descripción:</b><br>
+          <p class="text-justify">${detalleV.descripcion}</p>
           <b>Detalles de la vacante</b>:<br>
-          aqui van los detalles
+          ${detalleV.detalle}
         </div>
       </div>      
       <!-- Site footer -->

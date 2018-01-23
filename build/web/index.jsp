@@ -57,7 +57,7 @@ del servlet siteController-->
           Es muy fácil de usar, solo haz clic en una vacante, ingresa para ver los detalles y envíanos tu CV en formato 
           PDF o DOCX. Nosotros revisaremos tu CV y posteriormente te contactaremos.<br><br>
 
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Ver más Ofertas</a></p>                
+        <p><a class="btn btn-lg btn-success" href="vacante?action=all" role="button">Ver más Ofertas</a></p>                
       </div>
 
       <h1>Ofertas recientes</h1>
@@ -72,7 +72,7 @@ del servlet siteController-->
               <h2>${vacante.nombre}</h2>
               <p class="text-danger text-justify">${vacante.descripcion}</p>
               <p class="text-justify">${vacante.detalle}</p>
-              <p><a class="btn btn-primary" href="#" role="button">Ver Detalles &raquo;</a></p>
+              <p><a class="btn btn-primary" href="vacante?action=ver&id=${vacante.id}" role="button">Ver Detalles &raquo;</a></p>
             </div>
               
         </c:forEach>

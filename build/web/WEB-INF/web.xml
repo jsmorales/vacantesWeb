@@ -8,13 +8,21 @@
         <servlet-name>siteController</servlet-name>
         <servlet-class>vacatesWeb.controllers.siteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>detalleVacanteController</servlet-name>
+        <servlet-class>vacatesWeb.controllers.detalleVacanteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>vancanteController</servlet-name>
-        <url-pattern>/vancante</url-pattern>
+        <url-pattern>/vacante</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>siteController</servlet-name>
         <url-pattern>/homepage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detalleVacanteController</servlet-name>
+        <url-pattern>/detalleVacanteController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
