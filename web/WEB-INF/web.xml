@@ -4,9 +4,17 @@
         <servlet-name>vancanteController</servlet-name>
         <servlet-class>vacatesWeb.controllers.vancanteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>siteController</servlet-name>
+        <servlet-class>vacatesWeb.controllers.siteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>vancanteController</servlet-name>
         <url-pattern>/vancante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>siteController</servlet-name>
+        <url-pattern>/homepage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

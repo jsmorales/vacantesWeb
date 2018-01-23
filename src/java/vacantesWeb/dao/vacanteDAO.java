@@ -2,8 +2,11 @@
 package vacantesWeb.dao;
 
 import com.mysql.jdbc.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vacantesWeb.model.vacante;
@@ -48,6 +51,45 @@ public class vacanteDAO {
             
             return false;
         }
-    }    
+    }
+
+    public List<vacante> get3Ultimas(){
+        
+        try {
+            //se crea la sentencia sql
+            String sql = "select * from vacante order by id desc limit 3";
+            //se prepara la ejecucion
+            PreparedStatement ps = (PreparedStatement) cnn.getConnection().prepareStatement(sql);
+            //se ejcuta la sentencia dentro de un resultset(objeto que almacena resultados de bases de datos)            
+            ResultSet rs = ps.executeQuery();
+            //en una lista se cargan los resultados
+            List<vacante> listav = new LinkedList<>();
+            
+            
+            //se crea objeto vacio de tipo vacante de la clase modelo
+            vacante vacante;
+            
+            //se itera el resultset
+            while(rs.next()){
+                
+                //se instancia la clase vacante en el objeto vacante
+                vacante = new vacante(rs.getInt("id"));
+                vacante.setFechaPublicacion(rs.getDate("fechaPublicacion").toLocalDate());
+                vacante.setNombre(rs.getString("nombre"));
+                vacante.setDescripcion(rs.getString("descripcion"));
+                vacante.setDetalle(rs.getString("detalle"));
+                
+                //se agrega a la lista el resultado obtenido
+                listav.add(vacante);
+            }
+            
+            return listav;
+            
+        } catch (Exception e) {
+            
+            System.out.println("Error vacante get3Ultimas: "+e.getMessage());
+            return null;
+        }
+    }
     
 }
