@@ -61,7 +61,7 @@
                       <td>${vacantes.nombre}</td>
                       <td>${vacantes.fechaPublicacion}</td>
                       <td>
-                        <a class="btn btn-default" href="#" role="button">Ver Detalles</a>                                                    
+                        <a class="btn btn-default" href="vacante?action=ver&id=${vacantes.id}" role="button">Ver Detalles</a>                                                    
                         <a class="btn btn-default" href="#" role="button">Eliminar</a>                         
                       </td>  
                     </tr>
