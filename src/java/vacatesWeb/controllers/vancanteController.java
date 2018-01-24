@@ -38,6 +38,9 @@ public class vancanteController extends HttpServlet {
         }else if("all".equals(actionParam)){
             
             this.verTodos(request, response);
+        }else if("search".equals(actionParam)){
+            
+            this.verBusqueda(request, response);
         }
     }
     
@@ -74,7 +77,7 @@ public class vancanteController extends HttpServlet {
     protected void verTodos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println("Ejecutando ver todos");
+        System.out.println("Ejecutando ver busqueda");
                         
         conexion con = new conexion();
         
@@ -89,6 +92,35 @@ public class vancanteController extends HttpServlet {
         RequestDispatcher rd; //permite hacer un reenvio de la solicitud
         
         request.setAttribute("vacantes", lista); //se añade un atributo message al request
+        
+        rd = request.getRequestDispatcher("/vacantes.jsp"); //al dispatcher se redirecciona al jsp
+        
+        rd.forward(request, response); //se ejecuta la redireccion
+                
+    }
+    
+    protected void verBusqueda(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        System.out.println("Ejecutando ver busqueda");
+        
+        String query = request.getParameter("query");
+        
+        System.out.println(query);
+        
+        conexion con = new conexion();
+        
+        vacanteDAO vacanteD = new vacanteDAO(con);
+        
+        List<vacante> vacante = vacanteD.getBusqueda(query);
+        
+        con.desconectar();
+        
+        System.out.println(vacante);
+        
+        RequestDispatcher rd; //permite hacer un reenvio de la solicitud
+        
+        request.setAttribute("vacantes", vacante); //se añade un atributo message al request
         
         rd = request.getRequestDispatcher("/vacantes.jsp"); //al dispatcher se redirecciona al jsp
         

@@ -26,15 +26,16 @@
         <h3 class="text-muted">My Company</h3>
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="#">Inicio</a></li>            
+            <li><a href="homepage">Inicio</a></li>            
             <li><a href="#">Administración</a></li>                        
             <li><a href="#">Acerca</a></li>            
           </ul>
         </nav>
       </div>
-      <form method ="post" action="#" class="navbar-form navbar-right">
+      <form method ="GET" action="vacante" class="navbar-form navbar-right">
         <div class="form-group">
-          <input type="text" name="query" required placeholder="Buscar oferta..." class="form-control">
+          <input type="text" name="query" placeholder="Buscar oferta..." class="form-control">
+          <input type="hidden" name="action" value="search">
         </div>        
         <button type="submit" class="btn btn-success">Buscar</button>
       </form>
