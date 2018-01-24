@@ -39,9 +39,10 @@ del servlet siteController-->
       </div>
       
       <!-- Formulario para la busqueda. El formulario es enviado por POST al BusquedaController -->    
-      <form method ="post" action="#" class="navbar-form navbar-right">
+      <form method ="GET" action="vacante" class="navbar-form navbar-right">
         <div class="form-group">
-          <input type="text" name="query" required placeholder="Buscar oferta..." class="form-control">
+          <input type="text" name="query" placeholder="Buscar oferta..." class="form-control">
+          <input type="hidden" name="action" value="search">
         </div>        
         <button type="submit" class="btn btn-success">Buscar</button>
       </form>
