@@ -5,6 +5,8 @@
  */
 package vacantesWeb.dao;
 
+import vacantesWeb.model.usuario;
+
 /**
  *
  * @author henry.mora
@@ -13,6 +15,9 @@ public class pruebaDB extends conexion{
     
    public static void main(String args[]){
        conexion conecta = new conexion();
-       conecta.getConnection();
+       //jsmorales 12345
+       usuarioDAO usrDao = new usuarioDAO(conecta);
+       usuario usr = usrDao.login("jsmorales", "12345");
+       System.out.println(usr);
    } 
 }
