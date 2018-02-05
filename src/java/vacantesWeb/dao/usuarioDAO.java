@@ -23,7 +23,8 @@ public class usuarioDAO {
         try {
             
             String sql = "select * from usuario where username=? and password=md5(?) and estatus='activo' limit 1";
-            
+            /*INSERT INTO `usuario` (`id`, `nombre`, `email`, `username`, `password`, `perfil`, `estatus`) VALUES (NULL, 'Johan Morales', 'jhellmetal2000@gmail.com', 'jsmorales', MD5('12345'), 'admin', 'activo');
+            */
             PreparedStatement ps;
             ps = cnn.getConnection().prepareStatement(sql);
             ps.setString(1, user);
