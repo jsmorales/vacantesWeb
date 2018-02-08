@@ -52,6 +52,29 @@ public class vacanteDAO {
             return false;
         }
     }
+    
+    public int deleteVacante(String id){
+    
+        String sql = "delete from vacante where id = ?;";
+        try {
+            //se instancia el metodo para ejecutar la sentencia sql
+            
+            //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            
+            //se instancia un statatement y se declaran las variables para cada poscicion
+            PreparedStatement pa = (PreparedStatement) cnn.getConnection().prepareStatement(sql);
+            pa.setString(1, id);
+                        
+            int rows = pa.executeUpdate();
+            
+            return rows;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(vacanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+            return 0;
+        }
+    }
 
     public List<vacante> get3Ultimas(){
         

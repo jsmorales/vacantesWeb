@@ -31,9 +31,9 @@ del servlet siteController-->
         <h3 class="text-muted">My Company</h3>
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="#">Inicio</a></li>            
+            <li><a href="homepage">Inicio</a></li>            
             <li><a href="usuario?action=validaLogin">Administración</a></li>                        
-            <li><a href="#">Acerca</a></li>            
+            <li><a href="acerca.jsp">Acerca</a></li>            
           </ul>
         </nav>
       </div>
@@ -71,8 +71,7 @@ del servlet siteController-->
           
             <div class="col-lg-4">
               <h2>${vacante.nombre}</h2>
-              <p class="text-danger text-justify">${vacante.descripcion}</p>
-              <p class="text-justify">${vacante.detalle}</p>
+              <p class="text-danger text-justify">${vacante.descripcion}</p>              
               <p><a class="btn btn-primary" href="vacante?action=ver&id=${vacante.id}" role="button">Ver Detalles &raquo;</a></p>
             </div>
               

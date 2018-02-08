@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Administración del Sistema</title>
+    <title>My Company - Acerca</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -16,36 +16,33 @@
   </head>
 
   <body>
-
+    
     <div class="container">
 
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
-        <h3 class="text-muted">My Company - Administración</h3>
+        <h3 class="text-muted">My Company</h3>
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="usuario?action=crearVacante">Crear Vacante</a></li>            
-            <li><a href="vacante?action=all">Vacantes</a></li>                           
-            <li><a href="usuario?action=logout">Salir</a></li>           
+            <li><a href="homepage">Inicio</a></li>            
+            <li><a href="usuario?action=validaLogin">Administración</a></li>                        
+            <li><a href="acerca.jsp">Acerca</a></li>            
           </ul>
         </nav>
       </div>
-      <br>
 
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Sistema</h3>          
-        </div>
-        <div class="panel-body">
-            <h4>${message}</h4>            
-        </div>
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h2>ACERCA</h2>
+        <p class="lead text-justify">Si tu compraste el curso <a href='#'>Desarrollo de aplicaciones web con Java EE - Servlets y JSP </a>
+          tu aprenderás a desarrollar esta aplicación paso a paso completamente desde cero. Todo el código fuente y la documentación 
+          estará disponible para que la puedas utilizarla en tus propios proyectos.
+          Cualquier duda o comentario puedes enviarme un correo electrónico.<br> <br>         
+          <b>Autor</b>: MIS Iván E. Tinajero Díaz<br>
+          <b>Email</b>: ivanetinajero@gmail.com
+        <p>
       </div>
-
-      <!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; 2016 My Company, Inc.</p>
-      </footer>
 
     </div> <!-- /container -->
 

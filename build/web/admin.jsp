@@ -26,7 +26,7 @@
         <nav>
           <ul class="nav nav-justified">
             <li><a href="usuario?action=crearVacante">Crear Vacante</a></li>            
-            <li><a href="#">Vacantes</a></li>                           
+            <li><a href="vacante?action=all">Vacantes</a></li>                           
             <li><a href="usuario?action=logout">Salir</a></li>            
           </ul>
         </nav>

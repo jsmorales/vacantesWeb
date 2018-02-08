@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import vacantesWeb.dao.conexion;
 import vacantesWeb.dao.vacanteDAO;
 import vacantesWeb.model.vacante;
@@ -41,6 +42,20 @@ public class vancanteController extends HttpServlet {
         }else if("search".equals(actionParam)){
             
             this.verBusqueda(request, response);
+        }else if("eliminar".equals(actionParam)){
+            RequestDispatcher rd;
+            String msg = "";
+            HttpSession sesion = request.getSession();
+            
+            if(sesion.getAttribute("usuario") == null){
+                msg = "No ha iniciado sesión.";
+                request.setAttribute("mensaje", msg);
+                rd = request.getRequestDispatcher("/login.jsp"); //al dispatcher se redirecciona al jsp        
+                rd.forward(request, response); //se ejecuta la redireccion
+            }else{
+                this.eliminarVacante(request, response);
+            }
+            
         }
     }
     
@@ -94,6 +109,37 @@ public class vancanteController extends HttpServlet {
         request.setAttribute("vacantes", lista); //se añade un atributo message al request
         
         rd = request.getRequestDispatcher("/vacantes.jsp"); //al dispatcher se redirecciona al jsp
+        
+        rd.forward(request, response); //se ejecuta la redireccion
+                
+    }
+    
+    protected void eliminarVacante(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        System.out.println("Ejecutando eliminarVacante");
+                        
+        conexion con = new conexion();
+        
+        vacanteDAO vacanteD = new vacanteDAO(con);
+        
+        int status = vacanteD.deleteVacante(request.getParameter("id"));
+        
+        String msg = "";
+        
+        if(status == 1){
+            msg = "La vacante se eliminó correctamente";
+        }else{
+            msg = "Error: No se eliminó la vacante.";
+        }
+        
+        con.desconectar(); //se desconecta de la base de datos
+        
+        RequestDispatcher rd; //permite hacer un reenvio de la solicitud
+        
+        request.setAttribute("message", msg); //se añade un atributo message al request
+        
+        rd = request.getRequestDispatcher("/mensaje.jsp"); //al dispatcher se redirecciona al jsp
         
         rd.forward(request, response); //se ejecuta la redireccion
                 

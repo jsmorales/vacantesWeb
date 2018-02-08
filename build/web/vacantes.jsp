@@ -27,7 +27,7 @@
         <nav>
           <ul class="nav nav-justified">
             <li><a href="homepage">Inicio</a></li>            
-            <li><a href="#">Administración</a></li>                        
+            <li><a href="usuario?action=validaLogin">Administración</a></li>                         
             <li><a href="#">Acerca</a></li>            
           </ul>
         </nav>
@@ -62,14 +62,16 @@
                       <td>${vacantes.nombre}</td>
                       <td>${vacantes.fechaPublicacion}</td>
                       <td>
-                        <a class="btn btn-default" href="vacante?action=ver&id=${vacantes.id}" role="button">Ver Detalles</a>                                                    
-                        <a class="btn btn-default" href="#" role="button">Eliminar</a>                         
+                        <a class="btn btn-default" href="vacante?action=ver&id=${vacantes.id}" role="button">Ver Detalles</a>
+                        <c:if test="${usuario != null}">
+                            <a class="btn btn-default" href="vacante?action=eliminar&id=${vacantes.id}" role="button">Delete</a>
+                        </c:if>
                       </td>  
                     </tr>
                 </c:forEach>
                 <!--<tr>
                   <td class="left">My id</td>
-                  <td>Nombre vacante</td>
+                  <td>Name of the job</td>
                   <td>fecha</td>
                   <td>
                     <a class="btn btn-default" href="#" role="button">Ver Detalles</a>                                                    
