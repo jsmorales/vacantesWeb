@@ -5,6 +5,7 @@
  */
 package vacatesWeb.controllers;
 
+import genFunctions.notificacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -37,18 +38,21 @@ public class usuarioController extends HttpServlet {
         //se instancia HttpSession para validar si existe o no una sesion creada
         HttpSession sesion = request.getSession();
         RequestDispatcher rd;
-        String msg = "";
+        String msg = "";                
         
         switch (actionParam){
             case "validaLogin" : {
                 if(sesion.getAttribute("usuario") == null ){
+                    
                     msg = "No ha iniciado sesión.";
                     request.setAttribute("mensaje", msg);
                     rd = request.getRequestDispatcher("/login.jsp"); //al dispatcher se redirecciona al jsp        
                     rd.forward(request, response); //se ejecuta la redireccion
+                    
                 }else{
+                    
                     rd = request.getRequestDispatcher("/admin.jsp"); //al dispatcher se redirecciona al jsp        
-                    rd.forward(request, response); //se ejecuta la redireccion
+                    rd.forward(request, response); //se ejecuta la redireccion                                        
                 }
                 break;
             }
@@ -106,20 +110,18 @@ public class usuarioController extends HttpServlet {
         usuario usrObj = usr.login(user, pass);
         //se desconecta la base de datos
         con.desconectar();
+                              
+        //instanciar notificacion
+        notificacion not = new notificacion();
         
-        RequestDispatcher rd; //permite hacer un reenvio de la solicitud
         
         if(usrObj.getId() > 0){ //evalua si el objeto usuario cargó el id desde la base de datos
             //se crea la variable de sesion con los datos del usuario
             sesion.setAttribute("usuario", usrObj); //se setea el atributo usuario en la sesion con el objeto usuario creado anteriormente
-            //para acceder a este objeto se usa el nombre del atributo.nombre de la propiedad del objeto
-            rd = request.getRequestDispatcher("/admin.jsp"); //al dispatcher se redirecciona al jsp
-            rd.forward(request, response); //se ejecuta la redireccion
-        }else{
-            msg = "Nombre de usuario o contraseña inválidos.";            
-            request.setAttribute("mensaje", msg); //se añade un atributo message al request        
-            rd = request.getRequestDispatcher("/login.jsp"); //al dispatcher se redirecciona al jsp
-            rd.forward(request, response); //se ejecuta la redireccion
+            
+            not.notificar("Ha iniciado sesión.","mensaje.jsp", request, response);
+        }else{            
+            not.notificar("Nombre de usuario o contraseña inválidos.","login.jsp", request, response);
         }
     }
 

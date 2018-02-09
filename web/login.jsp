@@ -33,7 +33,7 @@
         <input type="text" id="user" name="user" class="form-control" placeholder="Escriba nombre de usuario" required autofocus>
         <label for="pass" class="sr-only">Password</label>
         <input type="password" id="pass" name="pass" class="form-control" placeholder="Escriba su password" required>       
-        <p class="text-danger">${mensaje}</p>
+        <p class="text-danger">${message}</p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
       </form>
 

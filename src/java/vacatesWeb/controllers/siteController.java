@@ -2,6 +2,7 @@
 
 package vacatesWeb.controllers;
 
+import genFunctions.notificacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -40,13 +41,18 @@ public class siteController extends HttpServlet {
         //se desconecta la base de datos
         con.desconectar();
         
+        if(lista3Vacantes!=null){
         //se setea el atributo resultado al request de este metodo
         request.setAttribute("resultado", lista3Vacantes);
         //usando el objeto de redireccionamiento se crea la redireccion
         rd = request.getRequestDispatcher("/index.jsp");
         //se ejecuta la redireccion
         rd.forward(request, response);
-        
+        }else{
+            //instanciar notificacion
+            notificacion not = new notificacion();
+            not.notificar("El resultado de la consulta inicial es 'null', por favor revise si hay conexion a la base de datos o si los registros están vacíos.","mensaje.jsp", request, response);
+        }
         
     }
 
